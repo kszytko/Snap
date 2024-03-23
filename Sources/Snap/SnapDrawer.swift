@@ -52,15 +52,15 @@ public struct SnapDrawer<StateType: SnapState, Background : View, Content: View>
             }
             .onEnded(onDragEnded)
 
-        return ZStack {
+        return ZStack(alignment: .top) {
             currentResult.state.visible.map { background($0).edgesIgnoringSafeArea(.all) }
 
-            VStack(spacing: 0) {
-                currentResult.state.visible != nil ? Handle() : nil
+            //VStack(spacing: 0) {
+                //currentResult.state.visible != nil ? Handle() : nil
                 currentResult.state.visible.map { content($0).frame(height: currentResult.contentHeight) }
                 
-                Spacer()
-            }
+             //   Spacer()
+            //}
         }
         .frame(height: UIScreen.main.bounds.height)
         .clipShape(RoundedRectangle(cornerRadius: 20))
